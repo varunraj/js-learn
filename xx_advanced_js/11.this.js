@@ -110,3 +110,52 @@ const obj = {
     }
 
 obj.sing() //
+
+// Another example
+
+let bb = {
+    name: "varun",
+    sayName () {
+        setTimeout(()=> {
+            console.log("my name is ", this.name)
+        },100)
+    }
+}
+bb.sayName(); // we get "my name is varun"
+
+let bb = {
+    name: "varun",
+    sayName () {
+        setTimeout(function () {
+            console.log("my name is ", this.name)
+        },100)
+    }
+}
+
+bb.sayName(); // we get "my name is "
+
+
+
+
+// Another Example
+
+
+var b = {
+    name : 'Jay',
+    say() {console.log(this)}
+}
+
+var c = {
+    name : 'Jay',
+    say() {return function() {console.log(this)}}
+}
+
+
+var d = {
+    name : 'Jay',
+    say() {return () =>  {console.log(this)}}
+}
+
+b.say() // b
+c.say()() // window
+d.say()() // d
