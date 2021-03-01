@@ -80,3 +80,18 @@ socrates.age = 45
 socrates.mortal // true.
 human.isProtoTypeOf(socrates) // true
 
+// __proto__ points to the prototype of parent. But prototype is a proporty on the define function itselt. strings and arrays created wont have a prototype property. only functions will have it.
+
+function a() { }
+a.prototype.name = "kk"
+
+let person1 = new a();
+person1.name // kk
+
+// Add a new method lastYear() to a date object.
+
+
+Date.prototype.lastYear = function () { return this.getFullYear() - 1 } // getfullyear is a built in function. Using an arrow function wont work here.
+date1 = new Date.name('1990-10-03')
+date1.lastYear() // 2020.
+
