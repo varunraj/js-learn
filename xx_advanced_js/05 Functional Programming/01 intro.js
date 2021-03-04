@@ -50,3 +50,50 @@ function purchasesItem(items, user) {
     cart = []
 
 }
+
+
+// AMAZON SHOPPING WITH FP AFTER LEARN
+
+// we need to below functions
+
+
+
+function addItemsToCart(user, item) {
+    const updatedCart = user.cart.concat([item])
+    return Object.assign({}, user, { cart: updatedCart }) // created a new user with cart updated
+}
+
+function applyTaxToItems(user) {
+    const { cart } = user
+    taxRate = 1.3
+    const updatedCart = cart.map((item) => { name: item.name, price: item.price * taxRate })
+
+    return Object.assign({}, user, { cart: updatedCart })
+}
+
+function buyItem(user) {
+    return Object.assign({}, user, { purchases: user.cart })
+}
+
+
+function emptyCart(user) {
+    return Object.assign({}, user, { cart: [] })
+}
+
+
+// purchaseItem acts as a compose function
+
+const compose = (f, g) => (...args) => f(g(...args)) // for multiple function intake.
+
+
+function purchaseItem(...fns) { fns.reduce(compose) }
+
+purchasesItems(
+    emptyCart,
+    buyItem,
+    applyTaxToItems,
+    addItemsToCart
+
+)(user, { name: 'laptop', price: 300 }) // user will go through each of the function and user object is created new every time with new data field added/updated as it passed through.
+
+
