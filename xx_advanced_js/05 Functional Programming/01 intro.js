@@ -13,7 +13,7 @@
 // These restaints are in place to make this work in a good way.
 
 
-// AMAZON SHOPPING
+// AMAZON SHOPPING AFTER FP LEARN >>>>
 
 
 const user = {
@@ -34,25 +34,7 @@ item = {
 // 4. empty cart
 
 
-// add object to cart, add tax, move to purchase, then empty cart
-function purchasesItem(items, user) {
 
-    user.cart.push(items)
-    cartWithTax = items.map(element => {
-        const priceWithTax = element.price * 1.03
-        return {
-            name: element.name,
-            priceWithTax
-        }
-    });
-    purchases = cartWithTax
-    cartWithTax = []
-    cart = []
-
-}
-
-
-// AMAZON SHOPPING WITH FP AFTER LEARN
 
 // we need to below functions
 
@@ -96,4 +78,8 @@ purchasesItems(
 
 )(user, { name: 'laptop', price: 300 }) // user will go through each of the function and user object is created new every time with new data field added/updated as it passed through.
 
+
+// Now if we need to do refundItem(), we can play back the history by looking at all user objects.
+
+const amazonHistory = [] //  every time we do something is compose function, we can push user state to this history array. Now we can see user data history.
 
